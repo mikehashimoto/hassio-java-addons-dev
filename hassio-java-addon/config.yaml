@@ -9,3 +9,5 @@ arch:
   - armv7
   - i386
 init: false
+ports:
+  8080/tcp: 8080

@@ -1,0 +1,21 @@
+buildscript {
+	dependencies {
+		classpath group: "org.springframework.boot", name: "spring-boot-gradle-plugin", version: "2.7.3"
+	}
+
+	repositories {
+		mavenCentral()
+	}
+}
+
+apply plugin: "java"
+apply plugin: "org.springframework.boot"
+
+dependencies {
+	implementation group: "org.springframework.boot", name: "spring-boot-starter-web", version: "2.7.3"
+	implementation group: "org.springframework.boot", name: "spring-boot-starter-webflux", version: "2.7.3"
+}
+
+repositories {
+	mavenCentral()
+}

@@ -2,4 +2,10 @@ ARG BUILD_FROM
 
 FROM $BUILD_FROM
 
-CMD [ "echo", "Hello World!" ]
+RUN apk add --no-cache openjdk8 gradle
+
+COPY rootfs /
+
+RUN chmod a+x /run.sh
+
+CMD [ "/run.sh" ]
