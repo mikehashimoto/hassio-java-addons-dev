@@ -38,7 +38,7 @@ public class HttpRequest {
 
 		Map<String, String> headers = new HashMap<>();
 
-		headers.put("Authorization", "Bearer " + _homeAssistantAccessToken);
+		headers.put("Authorization", "Bearer " + _hassioAccessToken);
 		headers.put("Content-Type", "application/json");
 
 		webClientBuilder.defaultHeaders(httpHeaders -> {
@@ -50,7 +50,7 @@ public class HttpRequest {
 		WebClient.RequestBodySpec requestBodySpec = webClientBuilder
 			.build()
 			.method(httpMethod)
-			.uri(_homeAssistantURL + path);
+			.uri(_hassioURL + path);
 
 		if (data != null) {
 			requestBodySpec.body(BodyInserters.fromValue(data));
@@ -63,7 +63,7 @@ public class HttpRequest {
     }
 
 	private ClientHttpConnector _getClientHttpConnector() {
-		if (!_homeAssistantURL.startsWith("https://")) {
+		if (!_hassioURL.startsWith("https://")) {
 			return null;
 		}
 
@@ -81,10 +81,10 @@ public class HttpRequest {
 		}
 	}
 
-	@Value("${home.assistant.access.token}")
-	private String _homeAssistantAccessToken;
+	@Value("${hassio.access.token}")
+	private String _hassioAccessToken;
 
-	@Value("${home.assistant.url}")
-	private String _homeAssistantURL;
+	@Value("${hassio.url}")
+	private String _hassioURL;
 
 }

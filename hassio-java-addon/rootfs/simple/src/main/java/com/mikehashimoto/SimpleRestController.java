@@ -7,6 +7,9 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -124,6 +127,13 @@ public class SimpleRestController {
 				requestJSONObject.toString()));
 
 		return responseJSONArray.toString(2);
+	}
+
+	@RequestMapping(value = "/notification", method = RequestMethod.POST, consumes="application/json")
+	public String notification(@RequestBody String payload) {
+		System.out.println(payload);
+
+		return "{}";
 	}
 
 	@Autowired
