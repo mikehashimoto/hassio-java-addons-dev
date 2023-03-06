@@ -1,10 +1,5 @@
 package com.mikehashimoto;
 
-import com.mikehashimoto.http.request.HttpRequest;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,17 +11,11 @@ public class SimpleSpringBootApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(
 			SimpleSpringBootApplication.class, args);
 
-		HttpRequest httpRequest = (HttpRequest)context.getBean("httpRequest");
+		HassioWebSocketHandler hassioWebSocketHandler =
+			(HassioWebSocketHandler)context.getBean(
+				"hassioWebSocketHandler");
 
-		JSONArray statesJSONArray = new JSONArray(
-			httpRequest.get("/api/states"));
-
-		System.out.println(statesJSONArray.toString(2));
-
-		JSONArray servicesJSONArray = new JSONArray(
-			httpRequest.get("/api/services"));
-
-		System.out.println(servicesJSONArray.toString(2));
+		hassioWebSocketHandler.start();
 	}
 
 }

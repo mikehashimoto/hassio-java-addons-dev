@@ -139,7 +139,7 @@ public class SimpleRestController {
 	@Autowired
 	private HttpRequest _httpRequest;
 
-	@Value("${home.assistant.url}")
-	private String _homeAssistantURL;
+	@Value("${hassio.url}")
+	private String _hassioURL;
 
 }
